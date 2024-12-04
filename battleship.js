@@ -448,16 +448,20 @@ class Board {
 				if (row != 0 && col != 0) {
 					// Each cell is a div element with an ID with format: "c<row><col>"
 					cell.id = 'c' + (row-1) + (col-1);
+            cell.className = "cellJogavel"
 				}
 				else {
-					cell.style.backgroundColor = Board.COORD_COLOR;
-					cell.style.color = "white";
 					if (row == 0 && col != 0) {
 						cell.textContent = String.fromCharCode("A".charCodeAt(0) + col-1);
+            cell.className = "cell"
 					}
 					else if (col == 0 && row != 0) {
 						cell.textContent = row;
+            cell.className = "cell"
 					}
+          else if (col == 0 && row == 0) {
+            cell.className = "cell"
+          }
 				}
 
 				// The cells are absolute positioned in the board (see style.css)
@@ -521,3 +525,28 @@ class Board {
 	}
 }
 
+let darkMode = false
+
+// Dark Mode
+function DarkMode() {
+  var root = document.documentElement
+  darkMode = !darkMode
+  // Set the colors on the root for the dark and light mode
+  if (darkMode == false) {
+      root.style.setProperty('--cor-fundo', "rgb(230, 230, 230)")
+      root.style.setProperty('--cor-tabelaBordas-fundo', "rgb(20, 20, 20)")
+      root.style.setProperty('--cor-tabelaJogaveis-fundo', "rgb(255, 255, 255)")
+      root.style.setProperty('--cor-tabelaBordas-texto', "rgb(255, 255, 255)")
+      root.style.setProperty('--cor-button-texto', "rgb(20, 20, 20)")
+      root.style.setProperty('--cor-button-fundo', "rgb(200, 200, 200)")
+      root.style.setProperty('--cor-button-border', "rgb(20, 20, 20)")
+  } else {
+    root.style.setProperty('--cor-fundo', "rgb(20, 20, 20)")
+    root.style.setProperty('--cor-tabelaBordas-texto', "rgb(20, 20, 20)")
+    root.style.setProperty('--cor-tabelaBordas-fundo', "rgb(230, 230, 230)")
+    root.style.setProperty('--cor-tabelaJogaveis-fundo', "rgb(20, 20, 20)")
+    root.style.setProperty('--cor-button-fundo', "rgb(20, 20, 20)")
+    root.style.setProperty('--cor-button-texto', "rgb(200, 200, 200)")
+    root.style.setProperty('--cor-button-border', "rgb(200, 200, 200)")
+  }
+}

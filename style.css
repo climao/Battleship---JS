@@ -1,18 +1,39 @@
+:root {
+	--cor-fundo: rgb(230, 230, 230);
+	--cor-tabelaBordas-fundo: rgb(20, 20, 20);
+	--cor-tabelaJogaveis-fundo: rgb(230, 230, 230);
+	--cor-tabelaBordas-texto: rgb(255, 255, 255);
+
+	/* Button */
+
+	--cor-button-fundo: rgb(200, 200, 200);
+	--cor-button-texto: rgb(20, 20, 20);
+	--cor-button-border: rgb(20, 20, 20);
+}
+
+* {
+	user-select: none;
+	transition: .3s;
+}
+
 body {
-    margin: 60px auto;
+    margin: 0 auto;
     width: 70%;
     max-width: 950px;
+	background-color: var(--cor-fundo);
+	text-align: center;
 }
 
 h1 {
     font-size: 3em;
     font-family: 'Helvetica', 'Arial', 'Sans-Serif';
+    color: var(--cor-tabelaBordas-fundo);
 }
 
-p, button, input {
+p, button:not(#theme), input {
     font-size: 1.5em;
     line-height: 1.4em;
-    color: #333;
+    color: var(--cor-tabelaBordas-fundo);
 	margin-bottom: 1em;
 }
 
@@ -38,4 +59,35 @@ p, button, input {
   margin-top: 4em;
   text-align: center;
   font-weight: bold;
+}
+
+/* DarkMode */
+button#theme {
+	position: absolute;
+	bottom: 10px;
+	left: 15px;
+	border: 2px solid var(--cor-button-border);
+	border-radius: 5px;
+	background-color: var(--cor-button-fundo);
+	color: var(--cor-button-texto);
+	padding: 10px 20px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: .3s;
+}
+
+button#theme:hover {
+	background-color: rgb(150, 150, 150);
+	border: 2px solid transparent;
+}
+
+/* Cell */
+
+#gameboard .cell {
+	background-color: var(--cor-tabelaBordas-fundo);
+	color: var(--cor-tabelaBordas-texto);
+}
+
+#gameboard .cellJogavel {
+	background-color: var(--cor-tabelaJogaveis-fundo);
 }
